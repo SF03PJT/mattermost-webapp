@@ -2862,6 +2862,13 @@ export default class Client4 {
         );
     };
 
+    patchConfig = (config: AdminConfig) => {
+        return this.doFetch<AdminConfig>(
+            `${this.getBaseRoute()}/config/patch`,
+            {method: 'put', body: JSON.stringify(config)},
+        );
+    };
+
     reloadConfig = () => {
         return this.doFetch<StatusOK>(
             `${this.getBaseRoute()}/config/reload`,
@@ -3661,7 +3668,7 @@ export default class Client4 {
 
     subscribeCloudProduct = (productId: string) => {
         return this.doFetch<CloudCustomer>(
-            `${this.getCloudRoute()}/cloud/subscription`,
+            `${this.getCloudRoute()}/subscription`,
             {method: 'put', body: JSON.stringify({product_id: productId})},
         );
     }
